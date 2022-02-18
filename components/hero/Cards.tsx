@@ -3,10 +3,10 @@ import Image from "next/image";
 
 interface CardsProps {
   bgUrl: string;
-  onSelectHandler: (e: Number) => void;
+  onSelectHandler: (e: number) => void;
   onSetStateChange: (e: boolean) => void;
-  id: Number;
-  animate: Number;
+  id: number;
+  animate: number;
 }
 
 const Cards = ({

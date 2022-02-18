@@ -9,14 +9,13 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Slick from "../helper/Slick";
 import { useState } from "react";
-import { ResponProps } from "../../pages/index";
+import { ColorfulCircle } from "../../pages/index";
 import Image from "next/image";
 
-const Hero = ({ data }: ResponProps) => {
-  const [stateAnimate, setStateAnimate] = useState<Number>(0);
+const Hero = ({ data, genreData }: ColorfulCircle) => {
+  const [stateAnimate, setStateAnimate] = useState<number>(0);
   const [change, setStateChange] = useState(false);
-  const selectHandler = (res: Number) => {
-    console.log(data.slice(0, 4)[res as number]);
+  const selectHandler = (res: number) => {
     setStateAnimate(res);
   };
   const backdrop_path = change
@@ -44,15 +43,30 @@ const Hero = ({ data }: ResponProps) => {
         className="flex items-end justify-between pb-10"
         style={{ height: "calc(100vh - 76px)" }}
       >
-        <Info />
+        <Info
+          genreData={genreData}
+          infoData={data.slice(0, 4)[stateAnimate as number]}
+        />
         <div className="flex w-[65%] items-end">
           <FontAwesomeIcon
             icon={faChevronLeft}
             className="ml-2 w-5 h-5 rounded-full border text-white py-3 px-4 button-hover"
+            onClick={() =>
+              setStateAnimate((prevState) => {
+                if (prevState === 0) return 3;
+                return prevState - 1;
+              })
+            }
           />
           <FontAwesomeIcon
             icon={faChevronRight}
             className="ml-2 mr-4 w-5 h-5 rounded-full border text-white py-3 px-4 button-hover"
+            onClick={() =>
+              setStateAnimate((prevState) => {
+                if (prevState === 3) return 0;
+                return prevState + 1;
+              })
+            }
           />
           {data.slice(0, 4).map((ev, i) => {
             if (i === 2) {

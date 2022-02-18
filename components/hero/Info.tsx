@@ -3,30 +3,80 @@ import {
   faStar,
   faPlay,
   faChevronRight,
+  faStarHalf,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "../helper/Button";
 import Slick from "../helper/Slick";
+import { GenresProps } from "../../pages/index";
 
-const Info = () => {
+interface InfoProps {
+  infoData: {
+    adult: boolean;
+    backdrop_path: string;
+    genre_ids: number[];
+    id: number;
+    original_language: string;
+    original_title: string;
+    overview: string;
+    popularity: number;
+    poster_path: string;
+    release_date: string;
+    title: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+  };
+}
+
+const Info: React.FC<InfoProps & GenresProps> = ({ infoData, genreData }) => {
+  console.log(infoData);
+  //Avg Rating
+  const avgRating = infoData.vote_average / 2;
+  const int = Math.trunc(avgRating);
+  const arr = [];
+  for (let index = 0; index < int; index++) {
+    arr.push(
+      <FontAwesomeIcon icon={faStar} className="mr-1 text-yellow-400" />
+    );
+  }
+  if (avgRating - int > 0.8) {
+    arr.push(
+      <FontAwesomeIcon icon={faStar} className="mr-1 text-yellow-400" />
+    );
+  } else {
+    arr.push(
+      <FontAwesomeIcon icon={faStarHalf} className=" text-yellow-400 mr-0" />
+    );
+  }
+  for (let index = 0; index < 5 - Math.ceil(avgRating); index++) {
+    arr.push(<FontAwesomeIcon icon={faStar} className="mr-1 text-gray-900" />);
+  }
+  //Genre
+  const genres = infoData.genre_ids;
+  const stringGenres: string[] = [];
+  genres.map((ev) =>
+    genreData.filter((name) => {
+      if (name.id === ev) {
+        console.log(name.name);
+        stringGenres.push(name.name);
+      }
+    })
+  );
+  console.log(stringGenres);
   return (
     <div className="pl-10 w-1/4">
       <Slick label="Today" className="h-20" />
-
       <h1 className="font-bold text-white text-5xl capitalize mb-6 mt-2">
-        The matrix: resurrection
+        {infoData.title}
       </h1>
       <div className="mb-4">
-        <span>
-          <FontAwesomeIcon icon={faStar} className="mr-1 text-yellow-400" />
-          <FontAwesomeIcon icon={faStar} className="mr-1 text-yellow-400" />
-          <FontAwesomeIcon icon={faStar} className="mr-1 text-yellow-400" />
-          <FontAwesomeIcon icon={faStar} className="mr-1 text-yellow-400" />
-          <FontAwesomeIcon icon={faStar} className="mr-1 text-yellow-400" />
-        </span>
-        <span className="ml-1 text-white">Fiction, Action</span>
+        <span>{arr}</span>
+        <div className=" text-white capitalize mt-2">
+          {stringGenres.join(" | ")}
+        </div>
       </div>
-      <div className="mb-2 text-white">Availible times</div>
+      <div className="mb-2 text-white">Available times</div>
       <div className="flex items-center text-white mb-6">
         <Button className="mr-2 cursor-default">17:30</Button>
         <Button className="mr-2 cursor-default">17:30</Button>
