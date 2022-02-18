@@ -44,7 +44,7 @@ export async function getStaticProps(): Promise<
     props: {
       data,
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 }
 export default index;

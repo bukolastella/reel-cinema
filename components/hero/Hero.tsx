@@ -12,6 +12,15 @@ import { useState } from "react";
 import { ResponProps } from "../../pages/index";
 
 const Hero = ({ data }: ResponProps) => {
+  const [state, setState] = useState(data.slice(0, 4));
+
+  const selectHandler = (res: Number) => {
+    const moveInArray = function (arr: any, from: any, to: any) {
+      const item = arr.splice(0, from);
+      setState([...arr, ...item]);
+    };
+    moveInArray(state, res, 5);
+  };
   return (
     <div
       className="bg-[url('https://image.tmdb.org/t/p/original/eNI7PtK6DEYgZmHWP9gQNuff8pv.jpg')] bg-[#0808085b]
@@ -33,8 +42,13 @@ const Hero = ({ data }: ResponProps) => {
             icon={faChevronRight}
             className="ml-2 mr-4 w-5 h-5 rounded-full border text-white py-3 px-4"
           />
-          {data.slice(0, 4).map((ev, i) => (
-            <Cards bgUrl={ev.poster_path} key={i} />
+          {state.map((ev, i) => (
+            <Cards
+              bgUrl={ev.poster_path}
+              key={i}
+              id={i}
+              onSelectHandler={selectHandler}
+            />
           ))}
           {/* <Cards bgUrl="1g0dhYtq4irTY1GPXvft6k4YLjm" />
           <Cards bgUrl="aq4Pwv5Xeuvj6HZKtxyd23e6bE9" />

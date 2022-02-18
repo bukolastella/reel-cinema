@@ -1,13 +1,33 @@
 import React from "react";
 import Image from "next/image";
+import { useState } from "react";
 
 interface CardsProps {
   bgUrl: string;
+  onSelectHandler: (e: Number) => void;
+  id: Number;
 }
 
-const Cards = ({ bgUrl }: CardsProps) => {
+const Cards = ({ bgUrl, onSelectHandler, id }: CardsProps) => {
+  const [stateAnimate, setStateAnimate] = useState(false);
+
+  const trans = `transition ease-in-out -translate-y-36 duration-300`;
+  const clickHandler = (event: any) => {
+    setStateAnimate(true);
+  };
   return (
-    <div className="mx-2 w-[230px] h-[300px] relative">
+    <div
+      onTransitionEnd={(event: any) => {
+        setStateAnimate(false);
+        onSelectHandler(event.target.dataset.id);
+        console.log(event.target.dataset.id);
+      }}
+      className={`mx-2 w-[230px] h-[300px] relative ${
+        stateAnimate ? trans : ""
+      } `}
+      onClick={clickHandler}
+      data-id={id}
+    >
       <Image
         src={`https://image.tmdb.org/t/p/original${bgUrl}`}
         alt="Picture of the author"
