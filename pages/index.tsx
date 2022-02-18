@@ -23,6 +23,7 @@ export interface ResponProps {
 
 const index = (props: ResponProps) => {
   console.log(props.data[0]);
+
   return (
     <div>
       <Hero data={props.data} />
@@ -34,7 +35,7 @@ export async function getStaticProps(): Promise<
   GetStaticPropsResult<ResponProps>
 > {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=e2f2461a7e6d96df9ee72e2d06a514c0&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
   );
   const result = await res.json();
   const data = result.results;
