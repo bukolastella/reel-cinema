@@ -36,7 +36,7 @@ const Info = () => {
       </div>
 
       <div className="text-white">
-        <button className="p-3 px-8 bg-purple-600 rounded-md mr-3">
+        <button className="p-3 px-8 bg-secondary-600 rounded-md mr-3">
           Buy a ticket
         </button>
         <button className="p-3  px-6 border-2 border-white rounded-md mr-3">

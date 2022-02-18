@@ -7,6 +7,13 @@ module.exports = {
     fontFamily: {
       main: ["Roboto", "serif"],
     },
+    extend: {
+      colors: {
+        secondary: {
+          600: "#0d9488",
+        },
+      },
+    },
   },
   plugins: [],
 };
