@@ -12,7 +12,7 @@ const Navbar = () => {
           <span className="self-end font-semibold ">Reel</span>
         </div>
 
-        <Button>All films</Button>
+        <Button className={`button-hover`}>All films</Button>
       </div>
 
       <div className="text-xl">

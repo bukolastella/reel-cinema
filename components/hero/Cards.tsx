@@ -1,49 +1,49 @@
 import React from "react";
 import Image from "next/image";
-import { useState } from "react";
 
 interface CardsProps {
   bgUrl: string;
   onSelectHandler: (e: Number) => void;
+  onSetStateChange: (e: boolean) => void;
   id: Number;
+  animate: Number;
 }
 
-const Cards = ({ bgUrl, onSelectHandler, id }: CardsProps) => {
-  const [stateAnimate, setStateAnimate] = useState(false);
-
-  const trans = `transition ease-in-out -translate-y-36 duration-300`;
+const Cards = ({
+  bgUrl,
+  onSelectHandler,
+  id,
+  animate,
+  onSetStateChange,
+}: CardsProps) => {
+  const trans = `transition ease-in-out -translate-y-1 duration-500 h-[300px]`;
   const clickHandler = (event: any) => {
-    setStateAnimate(true);
+    onSelectHandler(+event.target.dataset.id);
   };
   return (
     <div
-      onTransitionEnd={(event: any) => {
-        setStateAnimate(false);
-        onSelectHandler(event.target.dataset.id);
-        console.log(event.target.dataset.id);
+      className={`mx-2 ${
+        id === 3 && "mr-4"
+      } w-[230px] relative hover:scale-110 hover:transition-all hover:ease-in-out ${
+        animate === id ? trans : "translate-y-0 h-[200px]"
+      }`}
+      onTransitionEnd={() => {
+        onSetStateChange(true);
       }}
-      className={`mx-2 w-[230px] h-[300px] relative ${
-        stateAnimate ? trans : ""
-      } `}
-      onClick={clickHandler}
-      data-id={id}
     >
       <Image
         src={`https://image.tmdb.org/t/p/original${bgUrl}`}
         alt="Picture of the author"
         layout="fill"
-        objectFit="cover"
+        objectFit="contain"
         objectPosition={"center"}
         className="rounded-md cursor-pointer"
         placeholder="blur"
         blurDataURL={`https://image.tmdb.org/t/p/original${bgUrl}`}
+        onClick={clickHandler}
+        data-id={id}
       />
     </div>
-
-    // <div
-    //   className={`w-[230px] h-[300px] mx-2 rounded-md cursor-pointer
-    //  bg-[url('https://image.tmdb.org/t/p/original/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg')] bg-center bg-cover `}
-    // ></div>
   );
 };
 

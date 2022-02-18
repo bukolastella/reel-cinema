@@ -20,3 +20,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.button-hover {
+  @apply hover:bg-secondary-600 hover:border-secondary-600 transition-all cursor-pointer;
+}

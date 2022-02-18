@@ -28,18 +28,21 @@ const Info = () => {
       </div>
       <div className="mb-2 text-white">Availible times</div>
       <div className="flex items-center text-white mb-6">
-        <Button className="mr-2">17:30</Button>
-        <Button className="mr-2">17:30</Button>
-        <Button className="mr-2">17:30</Button>
+        <Button className="mr-2 cursor-default">17:30</Button>
+        <Button className="mr-2 cursor-default">17:30</Button>
+        <Button className="mr-2 cursor-default">17:30</Button>
 
-        <FontAwesomeIcon icon={faChevronRight} className="ml-2 text-2xl" />
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          className="ml-2 text-2xl hover:text-3xl cursor-pointer"
+        />
       </div>
 
       <div className="text-white">
-        <button className="p-3 px-8 bg-secondary-600 rounded-md mr-3">
+        <button className="p-3 px-8 bg-secondary-600 rounded-md mr-3 hover:bg-teal-500">
           Buy a ticket
         </button>
-        <button className="p-3  px-6 border-2 border-white rounded-md mr-3">
+        <button className="p-3 px-6 border-2 border-white rounded-md mr-3 hover:bg-white hover:text-black">
           Watch
           <FontAwesomeIcon icon={faPlay} className="ml-4" />
         </button>
