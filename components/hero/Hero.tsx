@@ -31,6 +31,7 @@ const Hero = ({ data, genreData }: ColorfulCircle) => {
           objectFit="cover"
           quality={100}
           className="brightness-[.65]"
+          // priority={true}
           // placeholder="blur"
           // blurDataURL={`https://image.tmdb.org/t/p/original${
           //   data.slice(0, 4)[stateAnimate as number].backdrop_path

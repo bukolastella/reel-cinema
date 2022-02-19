@@ -16,7 +16,7 @@ const Cards = ({
   animate,
   onSetStateChange,
 }: CardsProps) => {
-  const trans = `transition ease-in-out -translate-y-1 duration-500 h-[300px]`;
+  const trans = `-translate-y-1 h-[300px]`;
   const clickHandler = (event: any) => {
     onSelectHandler(+event.target.dataset.id);
   };
@@ -24,9 +24,10 @@ const Cards = ({
     <div
       className={`mx-2 ${
         id === 3 && "mr-4"
-      } w-[230px] relative hover:scale-110 hover:transition-all hover:ease-in-out ${
+      } w-[230px] relative transition-all ease-in-out duration-700 ${
         animate === id ? trans : "translate-y-0 h-[200px]"
       }`}
+      onClick={clickHandler}
       onTransitionEnd={() => {
         onSetStateChange(true);
       }}
@@ -40,7 +41,6 @@ const Cards = ({
         className="rounded-md cursor-pointer"
         placeholder="blur"
         blurDataURL={`https://image.tmdb.org/t/p/original${bgUrl}`}
-        onClick={clickHandler}
         data-id={id}
       />
     </div>

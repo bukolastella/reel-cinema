@@ -58,12 +58,10 @@ const Info: React.FC<InfoProps & GenresProps> = ({ infoData, genreData }) => {
   genres.map((ev) =>
     genreData.filter((name) => {
       if (name.id === ev) {
-        console.log(name.name);
         stringGenres.push(name.name);
       }
     })
   );
-  console.log(stringGenres);
   return (
     <div className="pl-10 w-1/4">
       <Slick label="Today" className="h-20" />
@@ -77,7 +75,7 @@ const Info: React.FC<InfoProps & GenresProps> = ({ infoData, genreData }) => {
         </div>
       </div>
       <div className="mb-2 text-white">Available times</div>
-      <div className="flex items-center text-white mb-6">
+      <div className="flex items-center text-white mb-6 ">
         <Button className="mr-2 cursor-default">17:30</Button>
         <Button className="mr-2 cursor-default">17:30</Button>
         <Button className="mr-2 cursor-default">17:30</Button>
