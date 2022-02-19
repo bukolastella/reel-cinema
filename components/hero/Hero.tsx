@@ -18,25 +18,32 @@ const Hero = ({ data, genreData }: ColorfulCircle) => {
   const selectHandler = (res: number) => {
     setStateAnimate(res);
   };
+  // -100 300
+  //-200 200
+  //-300 100
   const backdrop_path = change
     ? data.slice(0, 4)[stateAnimate as number].backdrop_path
     : data.slice(0, 4)[0].backdrop_path;
   return (
     <div className={`relative w-screen h-screen`}>
-      <div className="absolute w-screen h-screen -z-10">
-        <Image
-          src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
-          alt="Picture of the author"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-          className="brightness-[.65]"
-          // priority={true}
-          // placeholder="blur"
-          // blurDataURL={`https://image.tmdb.org/t/p/original${
-          //   data.slice(0, 4)[stateAnimate as number].backdrop_path
-          // }`}
-        />
+      <div className="absolute w-screen h-screen -z-10 overflow-x-hidden">
+        {data.slice(0, 4).map((ev, i) => (
+          <div
+            key={i}
+            className={`${`transform translate-x-[${String(
+              100 * (i - stateAnimate)
+            )}%]`}  absolute w-full h-full transition-all ease-in-out duration-700`}
+          >
+            <Image
+              src={`https://image.tmdb.org/t/p/original${ev.backdrop_path}`}
+              alt="Picture of the author"
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+              className={`brightness-[.65] `}
+            />
+          </div>
+        ))}
       </div>
 
       <Navbar />

@@ -37,20 +37,38 @@ const Info: React.FC<InfoProps & GenresProps> = ({ infoData, genreData }) => {
   const arr = [];
   for (let index = 0; index < int; index++) {
     arr.push(
-      <FontAwesomeIcon icon={faStar} className="mr-1 text-yellow-400" />
+      <FontAwesomeIcon
+        icon={faStar}
+        key={arr.length}
+        className="mr-1 text-yellow-400"
+      />
     );
   }
   if (avgRating - int > 0.8) {
     arr.push(
-      <FontAwesomeIcon icon={faStar} className="mr-1 text-yellow-400" />
+      <FontAwesomeIcon
+        icon={faStar}
+        key={arr.length}
+        className="mr-1 text-yellow-400"
+      />
     );
   } else {
     arr.push(
-      <FontAwesomeIcon icon={faStarHalf} className=" text-yellow-400 mr-0" />
+      <FontAwesomeIcon
+        icon={faStarHalf}
+        key={arr.length}
+        className=" text-yellow-400 mr-0"
+      />
     );
   }
   for (let index = 0; index < 5 - Math.ceil(avgRating); index++) {
-    arr.push(<FontAwesomeIcon icon={faStar} className="mr-1 text-gray-900" />);
+    arr.push(
+      <FontAwesomeIcon
+        key={arr.length}
+        icon={faStar}
+        className="mr-1 text-gray-900"
+      />
+    );
   }
   //Genre
   const genres = infoData.genre_ids;
