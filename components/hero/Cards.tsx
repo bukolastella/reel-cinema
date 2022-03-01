@@ -16,7 +16,7 @@ const Cards = ({
   animate,
   onSetStateChange,
 }: CardsProps) => {
-  const trans = `-translate-y-1 h-[300px]`;
+  const trans = `-translate-y-1  h-[300px] sm:h-[300px]`;
   const clickHandler = (event: any) => {
     onSelectHandler(+event.target.dataset.id);
   };
@@ -24,8 +24,8 @@ const Cards = ({
     <div
       className={`mx-2 ${
         id === 3 && "mr-4"
-      } w-[230px] relative transition-all ease-in-out duration-700 hover:scale-105 hover:transition-all ${
-        animate === id ? trans : "translate-y-0 h-[200px]"
+      } w-[230px] relative  transition-all ease-in-out duration-700 hover:scale-105 hover:transition-all ${
+        animate === id ? trans : "translate-y-0 h-[200px] sm:h-[200px]"
       }`}
       onClick={clickHandler}
       onTransitionEnd={() => {
@@ -34,7 +34,7 @@ const Cards = ({
     >
       <Image
         src={`https://image.tmdb.org/t/p/original${bgUrl}`}
-        alt="Picture of the author"
+        alt="Movies pictures"
         layout="fill"
         objectFit="contain"
         objectPosition={"center"}

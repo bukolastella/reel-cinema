@@ -7,6 +7,7 @@ import {
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import Slick from "../helper/Slick";
 import { useState } from "react";
 import { ColorfulCircle } from "../../pages/index";
@@ -30,17 +31,17 @@ const Hero = ({ data, genreData }: ColorfulCircle) => {
         {data.slice(0, 4).map((ev, i) => (
           <div
             key={i}
-            className={`${`transform translate-x-[${String(
-              100 * (i - stateAnimate)
-            )}%]`}  absolute w-full h-full transition-all ease-in-out duration-700`}
+            className={`absolute w-full h-full transition-all ease-in-out duration-700`}
+            style={{ transform: `translateX(${100 * (i - stateAnimate)}%)` }}
           >
             <Image
               src={`https://image.tmdb.org/t/p/original${ev.backdrop_path}`}
-              alt="Picture of the author"
+              alt="Movies backdrop pictures"
               layout="fill"
               objectFit="cover"
               quality={100}
               className={`brightness-[.65] `}
+              priority
             />
           </div>
         ))}
@@ -48,39 +49,46 @@ const Hero = ({ data, genreData }: ColorfulCircle) => {
 
       <Navbar />
       <div
-        className="flex items-end justify-between pb-10"
+        className="flex flex-col sm:flex-row items-end sm:justify-between pb-10"
         style={{ height: "calc(100vh - 76px)" }}
       >
         <Info
           genreData={genreData}
           infoData={data.slice(0, 4)[stateAnimate as number]}
         />
-        <div className="flex w-[65%] items-end">
-          <FontAwesomeIcon
-            icon={faChevronLeft}
-            className="ml-2 w-5 h-5 rounded-full border text-white py-3 px-4 button-hover"
+        <div className="flex w-full sm:w-[65%] sm:items-end h-full">
+          <span
+            className="hidden sm:block ml-2 w-5 h-5 rounded-full border text-white py-3 px-4 button-hover"
             onClick={() =>
               setStateAnimate((prevState) => {
                 if (prevState === 0) return 3;
                 return prevState - 1;
               })
             }
-          />
-          <FontAwesomeIcon
-            icon={faChevronRight}
-            className="ml-2 mr-4 w-5 h-5 rounded-full border text-white py-3 px-4 button-hover"
+          >
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </span>
+
+          <span
+            className="hidden sm:block ml-2 mr-4 w-5 h-5 rounded-full border text-white py-3 px-4 button-hover"
             onClick={() =>
               setStateAnimate((prevState) => {
                 if (prevState === 3) return 0;
                 return prevState + 1;
               })
             }
-          />
+          >
+            <FontAwesomeIcon icon={faChevronRight} />
+          </span>
+
           {data.slice(0, 4).map((ev, i) => {
             if (i === 2) {
               return (
                 <React.Fragment key="random">
-                  <Slick label="Tomorrow" className="h-[370px] w-[8px] mb-8" />
+                  <Slick
+                    label="Tomorrow"
+                    className="sm:h-[370px] w-[8px] mb-8 hidden sm:block"
+                  />
                   <Cards
                     bgUrl={ev.poster_path}
                     key={i}

@@ -81,11 +81,14 @@ const Info: React.FC<InfoProps & GenresProps> = ({ infoData, genreData }) => {
     })
   );
   return (
-    <div className="pl-10 w-1/4">
-      <Slick label="Today" className="h-20" />
-      <h1 className="font-bold text-white text-5xl capitalize mb-6 mt-2">
-        {infoData.title}
-      </h1>
+    <div className="sm:pl-10 w-full sm:w-1/4">
+      <div className="flex sm:block mb-4 sm:mb-0">
+        <Slick label="Today" className="h-20" />
+        <h1 className="font-bold text-white text-2xl sm:text-5xl capitalize sm:mb-6 mt-2 self-end">
+          {infoData.title}
+        </h1>
+      </div>
+
       <div className="mb-4">
         <span>{arr}</span>
         <div className=" text-white capitalize mt-2">
@@ -93,7 +96,7 @@ const Info: React.FC<InfoProps & GenresProps> = ({ infoData, genreData }) => {
         </div>
       </div>
       <div className="mb-2 text-white">Available times</div>
-      <div className="flex items-center text-white mb-6 ">
+      <div className="flex items-center text-white mb-6 overflow-x-scroll">
         <Button className="mr-2 cursor-default">17:30</Button>
         <Button className="mr-2 cursor-default">17:30</Button>
         <Button className="mr-2 cursor-default">17:30</Button>
@@ -104,11 +107,11 @@ const Info: React.FC<InfoProps & GenresProps> = ({ infoData, genreData }) => {
         />
       </div>
 
-      <div className="text-white">
-        <button className="p-3 px-8 bg-secondary-600 rounded-md mr-3 hover:bg-teal-500">
+      <div className="text-white flex sm:block">
+        <button className="py-3 px-4 sm:px-8 bg-secondary-600 rounded-md mr-3 hover:bg-teal-500">
           Buy a ticket
         </button>
-        <button className="p-3 px-6 border-2 border-white rounded-md mr-3 hover:bg-white hover:text-black">
+        <button className="py-3  px-4 sm:px-6 border-2 border-white rounded-md mr-3 hover:bg-white hover:text-black">
           Watch
           <FontAwesomeIcon icon={faPlay} className="ml-4" />
         </button>
