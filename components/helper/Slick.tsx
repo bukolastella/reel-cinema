@@ -6,7 +6,7 @@ interface SlickProps {
 }
 const Slick = ({ label, className }: SlickProps) => {
   return (
-    <div className={`flex ${className} `}>
+    <div className={`${className} `}>
       <span className="flex flex-col items-center mt-2">
         <span className="bg-white w-2 h-2 rounded-full"></span>
         <span

@@ -24,3 +24,10 @@ a {
 .button-hover {
   @apply hover:bg-secondary-600 hover:border-secondary-600 transition-all cursor-pointer;
 }
+.non-scrollable::-webkit-scrollbar {
+  display: none;
+}
+.non-scrollable {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}

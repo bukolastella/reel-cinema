@@ -81,10 +81,10 @@ const Info: React.FC<InfoProps & GenresProps> = ({ infoData, genreData }) => {
     })
   );
   return (
-    <div className="sm:pl-10 w-full sm:w-1/4">
-      <div className="flex sm:block mb-4 sm:mb-0">
-        <Slick label="Today" className="h-20" />
-        <h1 className="font-bold text-white text-2xl sm:text-5xl capitalize sm:mb-6 mt-2 self-end">
+    <div className="lg:pl-10 w-full lg:w-[35%]">
+      <div className="mb-0">
+        <Slick label="Today" className="h-20 flex" />
+        <h1 className="font-bold text-white text-2xl sm:text-5xl capitalize lg:mb-6 mt-2">
           {infoData.title}
         </h1>
       </div>
@@ -96,15 +96,16 @@ const Info: React.FC<InfoProps & GenresProps> = ({ infoData, genreData }) => {
         </div>
       </div>
       <div className="mb-2 text-white">Available times</div>
-      <div className="flex items-center text-white mb-6 overflow-x-scroll">
-        <Button className="mr-2 cursor-default">17:30</Button>
-        <Button className="mr-2 cursor-default">17:30</Button>
-        <Button className="mr-2 cursor-default">17:30</Button>
-
-        <FontAwesomeIcon
+      <div className="flex items-center text-white mb-6">
+        <div className="flex items-center non-scrollable overflow-x-scroll">
+          <Button className="mr-2 cursor-default">17:30</Button>
+          <Button className="mr-2 cursor-default">17:30</Button>
+          <Button className="mr-2 cursor-default">17:30</Button>
+        </div>
+        {/* <FontAwesomeIcon
           icon={faChevronRight}
-          className="ml-2 text-2xl hover:text-3xl cursor-pointer"
-        />
+          className="ml-4 text-2xl hover:text-3xl cursor-pointer"
+        /> */}
       </div>
 
       <div className="text-white flex sm:block">

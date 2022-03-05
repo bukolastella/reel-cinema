@@ -24,7 +24,7 @@ const Cards = ({
     <div
       className={`mx-2 ${
         id === 3 && "mr-4"
-      } w-[230px] relative  transition-all ease-in-out duration-700 hover:scale-105 hover:transition-all ${
+      } w-[230px] relative lg:block hidden transition-all ease-in-out duration-700 hover:scale-105 hover:transition-all ${
         animate === id ? trans : "translate-y-0 h-[200px] sm:h-[200px]"
       }`}
       onClick={clickHandler}
