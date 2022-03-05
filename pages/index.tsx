@@ -34,7 +34,7 @@ const index: React.FC<ColorfulCircle> = (props) => {
 
   return (
     <div>
-      <Hero data={props.data} genreData={props.genreData} />
+      <Hero data={props.data || null} genreData={props.genreData || null} />
     </div>
   );
 };
