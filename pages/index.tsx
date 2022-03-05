@@ -46,18 +46,18 @@ export async function getStaticProps(): Promise<
     `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
   );
   const result = await res.json();
-  const data = JSON.parse(JSON.stringify(result.results));
+  // const data =  ;
 
   const genreRes = await fetch(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
   );
   const genreResult = await genreRes.json();
-  const genreData = JSON.parse(JSON.stringify(genreResult?.genres));
+  // const genreData = genreResult?.genres;
 
   return {
     props: {
-      data,
-      genreData,
+      data: result.results,
+      genreData: genreResult?.genres,
     },
     revalidate: 10,
   };
