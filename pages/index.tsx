@@ -57,7 +57,7 @@ export async function getStaticProps(): Promise<
   return {
     props: {
       data: result.results,
-      genreData: genreResult?.genres,
+      genreData: genreResult.genres,
     },
     revalidate: 10,
   };
